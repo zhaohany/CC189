@@ -12,7 +12,7 @@ public class Tester {
 		for (String s : strings) {
 			boolean a = QuestionA.isPermutationOfPalindrome(s);
 			boolean b = QuestionB.isPermutationOfPalindrome(s);
-			boolean c = QuestionC.isPermutationOfPalindrome(s);
+			boolean c = QuestionZ.isPermutationOfPalindrome(s);
 			System.out.println(s);
 			if (a == b && b == c) {
 				System.out.println("Agree: " + a);

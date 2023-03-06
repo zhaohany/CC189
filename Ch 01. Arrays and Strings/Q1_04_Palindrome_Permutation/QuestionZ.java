@@ -1,39 +1,41 @@
 package Q1_04_Palindrome_Permutation;
 
 public class QuestionZ {
-	/* Toggle the ith bit in the integer. */
-	public static int toggle(int bitVector, int index) {
-		if (index < 0) return bitVector;
-		
-		int mask = 1 << index;
-		if ((bitVector & mask) == 0) {
-			bitVector |= mask;
-		} else {
-			bitVector &= ~mask;
-		}
-		return bitVector;
-	}
-	
-	/* Create bit vector for string. For each letter with value i,
-	 * toggle the ith bit. */
-	public static int createBitVector(String phrase) {
-		int bitVector = 0;
-		for (char c : phrase.toCharArray()) {
-			int x = Common.getCharNumber(c);
-			bitVector = toggle(bitVector, x);
-		}
-		return bitVector;
-	}
-	
-	/* Check that at most one bit is set by subtracting one from the 
-	 * integer and ANDing it with the original integer. */
-	public static boolean checkAtMostOneBitSet(int bitVector) {
-		return (bitVector & (bitVector - 1)) == 0;
-	}
-	
 	public static boolean isPermutationOfPalindrome(String phrase) {
-		int bitVector = createBitVector(phrase);
-		return checkAtMostOneBitSet(bitVector);
+		int [] count_map = new int[26];
+		char[] phrase_array = phrase.toCharArray();
+		int odd_count = 0;
+		for (int i = 0; i<phrase_array.length; i++){
+			int charnum = getCharNum(phrase_array[i]);
+			//System.out.print(phrase_array[i]);
+			//System.out.println(charnum);
+			if(charnum != -1){
+				count_map[charnum]++;
+				if(count_map[charnum]%2 == 0){
+					odd_count--;
+				}else{
+					odd_count++;
+				}
+			}
+		}
+		if(odd_count > 1){
+			return false;
+		}else{
+			return true;
+		}
+
+	}
+
+	public static int getCharNum(char letter){
+		int a = Character.getNumericValue('a');
+		int z = Character.getNumericValue('z');
+		int l = Character.getNumericValue(letter);
+		if(a<=l && z>=l) {
+			return  l - a;
+		}else{
+			return -1;
+		}
+
 	}
 	
 	public static void main(String[] args) {
