@@ -4,7 +4,7 @@ public class Tester {
 	
 	public static void test(String a, String b, boolean expected) {
 		boolean resultA = QuestionA.oneEditAway(a, b);
-		boolean resultB = QuestionB.oneEditAway(a, b);		
+		boolean resultB = QuestionZ.oneEditAway(a, b);
 		
 		if (resultA == expected && resultB == expected) {
 			System.out.println(a + ", " + b + ": success");

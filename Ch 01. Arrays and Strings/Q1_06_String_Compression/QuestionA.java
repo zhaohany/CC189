@@ -1,6 +1,6 @@
 package Q1_06_String_Compression;
 
-public class QuestionA {	
+public class QuestionA {
 	public static String compressBad(String str) {
 		String compressedString = "";
 		int countConsecutive = 0;
